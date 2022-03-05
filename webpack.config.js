@@ -39,9 +39,11 @@ module.exports = {
         directory: path.resolve(__dirname, 'build'),
         publicPath: '/build'
       },
+    //possibly add in 8080 target
     proxy: {
         '/': {
-            target: 'http://localhost:3000/',
+            target: 'http://localhost:8080/',
+            router: () => 'http://localhost:3000',
             secure: false,
         },
     },
