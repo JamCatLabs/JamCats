@@ -1,10 +1,14 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-
-//
-const PORT = 3000;
+const mongoose = require('mongoose');
 const app = express();
+
+const PORT = 3000;
+
+const signUpRouter = require('./routes/signup');
+const loginRouter = require('./routes/login');
+const jamSessionRouter = require('./routes/jamSession');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -17,8 +21,18 @@ app.use(express.static(path.join(__dirname, '../client')))
 //     res.status(200).send(path.resolve(__dirname, '../client/index.html'));
 // })
 
+// define route handlers
+app.use('/signup', signUpRouter);
+app.use('/login', loginRouter);
+app.use('/jamSession', jamSessionRouter);
 
-// Catch all request to unkown routes
+
+
+
+
+
+
+// Catch all request to unknown routes
 app.use('*',(req, res) => res.status(404).send('404: Page Not Found :/'));
 
 // Global error handler to catch any middleware error
@@ -35,10 +49,10 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, () => {console.log(`Server listening on ${PORT}`)});
 
-// const CONNECTION_URL = '';
-// mongoose.connect(CONNECTION_URL)
-//     .then(() => app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`)))
-//     .catch((error) => console.log(error.message));
+const CONNECTION_URL = '';
+mongoose.connect(CONNECTION_URL)
+  .then(() => app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`)))
+  .catch((error) => console.log(error.message));
 
 module.exports = app;
 
