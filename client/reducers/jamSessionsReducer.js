@@ -1,7 +1,9 @@
 import * as types from '../constants/types';
 
 const initialState = {
-  hello: [],
+  songsList: [],
+  newSong: '',
+  jamSessionsList: {}
 }
 
 const jamSessionsReducer = (state = initialState, action) => {
