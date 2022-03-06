@@ -1,6 +1,8 @@
 //const fs = require('fs');
 const path = require('path');
 const User = require('../models/userModels.js');
+const bcrypt = require('bcryptjs');
+
 
 const authController = {};
 
@@ -23,20 +25,39 @@ authController.createUser = (req, res, next) => {
   })
 } 
 
-authController.loginAccount = async (req, res, next) => {
-  // const params = [req.body.username, req.body.password, req.body.email];
-  // const text = `INSERT INTO accounts (username, password, email)
-  // VALUES ($1, $2, $3)`
-  // try{
-  //   const result = await db.query(text, params)
-  //   console.log('success');
-  // }
-  // catch (error) { 
-  //   return next({ 
-  //     log: `Error occured in createAccount: ${error}`
-  //   });
-  // }
-  
+
+authController.verifyUser = (req, res, next) => {
+    const { username, password } = req.body;
+    if (!username || !password) return next({ 'Missing username or password in authController.verifyUser' });
+    User.findOne({ username: username }, (err, user) => {
+      if (err) {
+          // database error
+          return next('Error in authController.verifyUser: ' + JSON.stringify(err));
+       }
+      else if (!user) {
+        // no user was found
+        res.redirect('/signup');
+      }
+      else {
+        // user was found, compare the password to the hashed one
+        bcrypt.compare(password, user.password)
+          .then(result => {
+            if (!result) {
+            // password did not match
+              res.redirect('/signup')
+            }
+            else {
+              // password did match, save user for following middlewars
+              res.locals.user = user;
+              return next()
+              }
+            })
+          .catch(err => {
+            // error while bcrypt was running
+            return next('Error in authController.verifyUser: ' + JSON.stringify(err))
+        })
+      }
+    })
 }
 
 
