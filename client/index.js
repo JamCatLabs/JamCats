@@ -6,11 +6,13 @@ import store from './store';
 require('./style.scss')
 
 ReactDOM.render(
-    <Provider store = {store}>
-        <App/>
-    </Provider>, 
+        <App/>,
     document.querySelector('#root')
 );
+
+//{/* <Provider store={store}>
+ //   <App />
+//</Provider>,  */}
 
 
 
