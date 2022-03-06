@@ -1,4 +1,3 @@
-//const fs = require('fs');
 const path = require('path');
 const User = require('../models/userModels.js');
 const bcrypt = require('bcryptjs');
@@ -28,7 +27,7 @@ authController.createUser = (req, res, next) => {
 
 authController.verifyUser = (req, res, next) => {
     const { username, password } = req.body;
-    if (!username || !password) return next({ 'Missing username or password in authController.verifyUser' });
+    if (!username || !password) return next({ log: 'Missing username or password in authController.verifyUser' });
     User.findOne({ username: username }, (err, user) => {
       if (err) {
           // database error
@@ -60,7 +59,4 @@ authController.verifyUser = (req, res, next) => {
     })
 }
 
-
-
-// ?? Is this right?
 module.exports = authController;

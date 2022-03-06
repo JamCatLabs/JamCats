@@ -1,42 +1,20 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 import Home from './containers/Home';
+import Navbar from './components/Navbar';
 
 class App extends Component {
   render() {
 
     return (
       <div>
-        <nav className='navbar'>
-          <div className='navbar-brand'>
-            <div className='navbar-item'>
-              <h1>JAM CATS</h1>
-            </div>
-          </div>
-          <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-primary">
-                <strong>Sign up</strong>
-              </a>
-              <a class="button is-light">
-                Log in
-              </a>
-            </div>
-          </div>
-        </div>
-        </nav>
+        <Navbar />
         <div className='content'>
-          <div id="main-dashboard">
-            {/* 
-            button to create a new jam session
-            button to logout
-            container to hold all of the jam sessions
-            cards to hold informatoin about each jam session
-             */}
+          {/* currently grouping all pages on App component. Will separate with react router */}
+          <div className='box' id="main-dashboard">
             <Home/>
           </div>
-          <div id="queue-dashboard">
+          <div className='box' id="queue-dashboard">
             {/* 
             search bar
             queue container
@@ -45,6 +23,8 @@ class App extends Component {
             users in session container
             logout button
              */}
+            <input type='search' className='input is-primary'></input>
+
           </div>
           <button className='button'>New Button</button>
 
