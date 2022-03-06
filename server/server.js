@@ -11,15 +11,16 @@ const loginRouter = require('./routes/login');
 const jamSessionRouter = require('./routes/jamSession');
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended: true})); // {extended: true} stops urlencoded from being deprecated
 
-app.use(express.static(path.join(__dirname, '../client')))
+// serve all the static files within the client folder, images
+app.use(express.static(path.join(__dirname, '../client')));
 // in production mode, need to serve bundle file in build folder? 
 
-//may be necessary for production
-// app.get('/', (req, res) => {
-//     res.status(200).send(path.resolve(__dirname, '../client/index.html'));
-// })
+// serve the index.html file for the homepage
+app.get('/', (req, res) => {
+  res.status(200).send(path.resolve(__dirname, '../client/index.html'));
+});
 
 // define route handlers
 app.use('/signup', signUpRouter);
@@ -47,12 +48,12 @@ app.use((err, req, res, next) => {
   return res.status(errorObj.status).json(errorObj.message);
 });
 
-app.listen(PORT, () => {console.log(`Server listening on ${PORT}`)});
+//app.listen(PORT, () => {console.log(`Server listening on ${PORT}`)});
 
-const CONNECTION_URL = '';
+const CONNECTION_URL = 'mongodb+srv://Mia:1q2w3e@mongodb1.jaqwf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 mongoose.connect(CONNECTION_URL)
   .then(() => app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`)))
-  .catch((error) => console.log(error.message));
+  .catch((error) => console.log('asdjfkldkfjakl', error.message));
 
 module.exports = app;
 

@@ -15,7 +15,23 @@ sessionController.isLoggedIn = (req, res, next) => {
 * startSession - create and save a new Session into the database.
 */
 sessionController.startSession = (req, res, next) => {
-//write code here
+    const cookieId = res.locals.user._id;
+    const createdAt = Date.now(); // not sure if correct
+    if (!cookieId) return next({ 'Missing cookieId in sessionController.startSession'});
+
+    Session.create({ cookieId: cookieId, createdAt: createdAt }, (err, session) => {
+        if (err) {
+            return next({
+                log: 'Error in sessionController.startSession',
+                status: 400,
+                message: { err: 'An error occurred' },
+            })
+        }
+        else {
+            res.locals.session = session;
+            return next();
+        }
+    })
 
 };
 
