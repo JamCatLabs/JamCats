@@ -48,12 +48,13 @@ app.use((err, req, res, next) => {
   return res.status(errorObj.status).json(errorObj.message);
 });
 
-//app.listen(PORT, () => {console.log(`Server listening on ${PORT}`)});
 
-const CONNECTION_URL = 'mongodb+srv://Mia:1q2w3e@mongodb1.jaqwf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-mongoose.connect(CONNECTION_URL)
-  .then(() => app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`)))
-  .catch((error) => console.log('asdjfkldkfjakl', error.message));
+app.listen(PORT, () => {console.log(`Server listening on ${PORT}`)});
+
+// const CONNECTION_URL = 'mongodb+srv://Mia:1q2w3e@mongodb1.jaqwf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+// mongoose.connect(CONNECTION_URL)
+//   .then(() => app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`)))
+//   .catch((error) => console.log('asdjfkldkfjakl', error.message));
 
 module.exports = app;
 

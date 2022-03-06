@@ -17,7 +17,7 @@ sessionController.isLoggedIn = (req, res, next) => {
 sessionController.startSession = (req, res, next) => {
     const cookieId = res.locals.user._id;
     const createdAt = Date.now(); // not sure if correct
-    if (!cookieId) return next({ 'Missing cookieId in sessionController.startSession'});
+    if (!cookieId) return next({ log: 'Missing cookieId in sessionController.startSession'});
 
     Session.create({ cookieId: cookieId, createdAt: createdAt }, (err, session) => {
         if (err) {

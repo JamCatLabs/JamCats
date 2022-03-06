@@ -6,7 +6,7 @@ const authController = {};
 
 authController.createUser = (req, res, next) => {
   const { username, password } = req.body;
-  if (!username || !password) return next({'Missing username or password in authController.createUser'});
+  if (!username || !password) return next({log:'Missing username or password in authController.createUser'});
 
   User.create({ username: username, password: password }, (err, user) => {
     if (err) {
