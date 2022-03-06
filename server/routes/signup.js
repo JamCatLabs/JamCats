@@ -3,7 +3,7 @@ const path = require('path');
 const authController = require('../controllers/authController.js');
 const sessionController = require('../controllers/sessionController.js');
 const cookieController = require('../controllers/cookieController.js');
-const app = require('../server');
+const app = require('../server'); // do we need this here? -cs 3/6
 
 const signupRouter = express.Router();
 
@@ -13,8 +13,8 @@ signupRouter.get('/signup', (req, res) => {
 })
 
 // post req to create new user
-signupRouter.post('/', authController.createUser, sessionController.startSession, cookieController.setSSIDCookie, (req, res) => {
-  res.redirect('/dashboard');
+signupRouter.post('/', authController.verifyUser, sessionController.startSession, cookieController.setSSIDCookie, (req, res) => {
+  res.redirect('/dashboard'); // dashboard or whatever we call the homepage
 })  
 
 
