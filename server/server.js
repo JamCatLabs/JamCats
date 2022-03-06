@@ -11,7 +11,7 @@ const loginRouter = require('./routes/login');
 const jamSessionRouter = require('./routes/jamSession');
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static(path.join(__dirname, '../client')))
 // in production mode, need to serve bundle file in build folder? 

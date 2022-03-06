@@ -11,9 +11,9 @@ const signupRouter = express.Router();
 // })
 
 // post req to create new account
-signupRouter.post('/', authController.createAccount(), (err, res) => {
+// signupRouter.post('/', authController.createAccount(), (err, res) => {
 
-})  
+// })  
 
 
 module.exports = signupRouter;
