@@ -23,7 +23,7 @@ const bcrypt = require('bcryptjs');
 const userSchema = new Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  jamSessionHistory: {type: Object, required: false},
+  // jamSessionHistory: {type: Object, required: false},
 });
 
 // pre-save hook is middleware that will run before the save to the collection happens
