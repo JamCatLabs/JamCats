@@ -36,29 +36,9 @@ const client_id = '205cd69007284821ada5a5f0cad50e05';
 const client_secret = 'ff4e4cb06fa74c9c8199716bb7d86df4';
 
 
-// define route handlers
-// app.use('/oauth', async (req, res) => {
-//   const authOptions = {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type' : 'application/x-www-form-urlencod',
-//       'Authorization': 'Basic ' + btoa(client_id + ':' + client_secret)
-//     },
-//     body: 'grant_type=client_credentials'
-//   };
-//   try {
-//     const response = await fetch('https://accounts.spotify.com/api/token', authOptions);
-//     const data = await response.json();
-//     return res.status(200).json(data);
-//   } catch (error) {
-//     return res.status(500).send(error);
-//   }
-// })
-
 app.use('/signup', signUpRouter);
 app.use('/login', loginRouter);
 app.use('/jamSession', jamSessionRouter);
-
 
 
 
