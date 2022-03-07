@@ -31,7 +31,7 @@ authController.verifyUser = (req, res, next) => {
   User.findOne({ username: username }, (err, user) => {
     if (err) {
       // database error
-      return next('Error in authController.verifyUser: ' + JSON.stringify(err));
+      return next({log:'Error in authController.verifyUser: ' + JSON.stringify(err)});
     }
     else if (!user) {
       // no user was found
@@ -53,7 +53,7 @@ authController.verifyUser = (req, res, next) => {
         })
         .catch(err => {
           // error while bcrypt was running
-          return next('Error in authController.verifyUser: ' + JSON.stringify(err))
+          return next({log :'Error in authController.verifyUser: ' + JSON.stringify(err)})
         })
     }
   })
@@ -67,7 +67,7 @@ authController.verifyCookie = (req, res, next) => {
   User.findOne({ username: username }, (err, user) => {
     if (err) {
       // database error
-      return next('Error in authController.verifyUser: ' + JSON.stringify(err));
+      return next({log: 'Error in authController.verifyUser: ' + JSON.stringify(err)});
     }
     else if (!user) {
       // no user was found
@@ -89,7 +89,7 @@ authController.verifyCookie = (req, res, next) => {
         })
         .catch(err => {
           // error while bcrypt was running
-          return next('Error in authController.verifyUser: ' + JSON.stringify(err))
+          return next({log: 'Error in authController.verifyUser: ' + JSON.stringify(err)})
         })
     }
   })

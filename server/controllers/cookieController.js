@@ -24,4 +24,9 @@ cookieController.setSSIDCookie = (req, res, next) => {
   return next();
 }
 
+// cookieController.setOauthCookie = (req, res, next) => {
+//   //res.cookie('ssid', , {httpOnly: true }); //store the token
+//   return next();
+// }
+
 module.exports = cookieController;
