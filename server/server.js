@@ -17,6 +17,9 @@ app.use(bodyParser.urlencoded({extended: true})); // {extended: true} stops urle
 app.use(express.static(path.join(__dirname, '../client')));
 // in production mode, need to serve bundle file in build folder? 
 
+// 
+
+
 // serve the index.html file for the homepage
 app.get('/', (req, res) => {
   res.status(200).send(path.resolve(__dirname, '../client/index.html'));

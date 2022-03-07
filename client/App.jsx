@@ -23,7 +23,6 @@ class App extends Component {
             users in session container
             logout button
              */}
-            <input type='search' className='input is-primary'></input>
 
           </div>
           <button className='button'>New Button</button>
