@@ -4,8 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
 const cookieParser = require('cookie-parser');
-// const fetch = require('node-fetch');
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 
 const PORT = 3000;
 
@@ -21,7 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client')));
 // in production mode, need to serve bundle file in build folder? 
 
-// need to 
+
 
 
 // serve the index.html file for the homepage
