@@ -5,6 +5,7 @@
   cards to hold informatoin about each jam session
   */}
 import React, { useState } from 'react'
+import Queue from '../components/Queue'
 
 function Home() {
   const [isActive, setIsActive] = useState(false)
@@ -46,6 +47,7 @@ function Home() {
                 </div>
               </div>
             </div>
+            <Queue/>
           </div>
         </div>
       </div>
