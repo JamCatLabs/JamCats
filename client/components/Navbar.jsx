@@ -12,7 +12,7 @@ function Navbar(props) {
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary" onClick={getToken} >
+            <a class="button is-primary">
               <strong>Sign up</strong>
             </a>
             <a href='/login' class="button is-light">
