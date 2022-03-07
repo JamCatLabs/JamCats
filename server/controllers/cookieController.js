@@ -6,7 +6,7 @@ const cookieController = {};
 
 // // copied from our unit
 // cookieController.setCookie = (req, res, next) => {
-//   res.cookie('dfsda', 'sdf');
+//   res.cookie('asd', 'adf');
 //   res.cookie('sdklf', 'alsdkf');
 //   res.cookie('secret', Math.floor(Math.random() * 100).toString());
 //   return next();
