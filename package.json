@@ -17,6 +17,7 @@
     "body-parser": "^1.19.2",
     "bulma": "^0.9.3",
     "concurrently": "^7.0.0",
+    "cookie-parser": "^1.4.6",
     "cross-env": "^7.0.3",
     "express": "^4.17.3",
     "mongoose": "^6.2.4",
