@@ -4,8 +4,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
 const cookieParser = require('cookie-parser');
-// const fetch = require('node-fetch');
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
+require('dotenv').config()
 
 const PORT = 3000;
 
@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client')));
 // in production mode, need to serve bundle file in build folder? 
 
-// need to 
+
 
 
 // serve the index.html file for the homepage
@@ -33,9 +33,14 @@ app.get('/', (req, res) => {
 
 // login with spotify
 const client_id = '205cd69007284821ada5a5f0cad50e05';
-const client_secret = 'ff4e4cb06fa74c9c8199716bb7d86df4';
 
 
+<<<<<<< HEAD
+=======
+// define route handlers
+
+
+>>>>>>> main
 app.use('/signup', signUpRouter);
 app.use('/login', loginRouter);
 app.use('/jamSession', jamSessionRouter);
