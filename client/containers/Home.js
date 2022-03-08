@@ -6,7 +6,7 @@
   */}
 import React, { useState } from 'react'
 import Queue from '../components/Queue'
-
+import SearchBar from '../components/SearchBar'
 function Home() {
   const [isActive, setIsActive] = useState(false)
   
@@ -47,6 +47,8 @@ function Home() {
                 </div>
               </div>
             </div>
+            <SearchBar/>
+
             <Queue/>
           </div>
         </div>

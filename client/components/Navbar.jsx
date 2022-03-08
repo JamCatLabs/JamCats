@@ -9,13 +9,13 @@ function Navbar(props) {
           <h1>JAM CATS</h1>
         </div>
       </div>
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary">
+      <div className="navbar-end">
+        <div className="navbar-item">
+          <div className="buttons">
+            <a className="button is-primary">
               <strong>Sign up</strong>
             </a>
-            <a href='/login' class="button is-light">
+            <a href='/login' className="button is-light">
               Log in
             </a>
           </div>
