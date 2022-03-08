@@ -115,6 +115,14 @@ loginRouter.get('/refresh_token', async function(req, res) {
   );
 
   const data = await response.json();
+  if (!data.error && data.status === 200) {
+    const access_token = data.access_token;
+    const refresh_token = data.refresh_token;
+    //update the accesses tokens inside of the cookies
+    res.cookie('spotify_access_token', access_token, {secure: true, httpOnly: true})
+    res.cookie('spotify_refresh_token', refresh_token, {secure: true, httpOnly: true})
+    res.status(200).json({ 'access_token': access_token})
+  }
   return res.status(200).json(data);
 });
 

@@ -12,6 +12,7 @@ const PORT = 3000;
 const signUpRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
 const jamSessionRouter = require('./routes/jamSession');
+const searchRouter = require('./routes/search');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); // {extended: true} stops urlencoded from being deprecated
@@ -35,15 +36,12 @@ app.get('/', (req, res) => {
 const client_id = '205cd69007284821ada5a5f0cad50e05';
 
 
-<<<<<<< HEAD
-=======
 // define route handlers
-
-
->>>>>>> main
 app.use('/signup', signUpRouter);
 app.use('/login', loginRouter);
 app.use('/jamSession', jamSessionRouter);
+app.use('/search', searchRouter);
+
 
 
 
