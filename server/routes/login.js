@@ -18,9 +18,7 @@ loginRouter.post('/', authController.verifyUser, sessionController.startSession,
   res.redirect('/dashboard'); // dashboard or whatever we call the homepage
 })
 
-
-const client_id = '205cd69007284821ada5a5f0cad50e05';
-const redirect_uri = 'http://localhost:8080/login/callback';
+const redirect_uri = (process.env.NODE_ENV === "development") ? 'http://localhost:8080/login/callback' : 'http://localhost:3000/login/callback'
 const stateKey = 'spotify_auth_state'
 
 // request to get authorization from user so our app can access Spotify resources in behalf of that user
@@ -32,7 +30,7 @@ loginRouter.get('/oauth', function(req, res) {
     "https://accounts.spotify.com/authorize?" +
       querystring.stringify({
         response_type: "code",
-        client_id: client_id,
+        client_id: process.env.CLIENT_ID,
         scope: scope,
         redirect_uri: redirect_uri,
         state: randomString,
@@ -66,7 +64,7 @@ loginRouter.get('/callback', async function (req, res) {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         Authorization:
-          "Basic " + btoa(client_id + ":" + process.env.CLIENT_SECRET),
+          "Basic " + btoa(process.env.CLIENT_ID + ":" + process.env.CLIENT_SECRET),
       },
       json: true,
     };
@@ -100,7 +98,7 @@ loginRouter.get('/refresh_token', async function(req, res) {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
       Authorization:
-        "Basic " + btoa(client_id + ":" + process.env.CLIENT_SECRET),
+        "Basic " + btoa(process.env.CLIENT_ID + ":" + process.env.CLIENT_SECRET),
     },
     body: new URLSearchParams({
       grant_type: "refresh_token",

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-const MONGO_URI = 'mongodb+srv://Mia:1q2w3e4r@mongodb1.jaqwf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const MONGO_URI = process.env.MONGO_URI
 
 mongoose.connect(MONGO_URI, {
   // options for the connect method to parse the URI

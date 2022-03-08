@@ -31,11 +31,6 @@ app.get('/', (req, res) => {
 });
 
 
-
-// login with spotify
-const client_id = '205cd69007284821ada5a5f0cad50e05';
-
-
 // define route handlers
 app.use('/signup', signUpRouter);
 app.use('/login', loginRouter);
